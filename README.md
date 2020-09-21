@@ -1,1 +1,1 @@
-# Work-shop
+# Preparing for the Work-shop
