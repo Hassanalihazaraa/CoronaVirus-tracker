@@ -1,4 +1,4 @@
-package com.coronavirustracker.workshop.model;
+package com.coronavirustracker.workshop.models;
 
 public class LocationStats {
     private String state;
@@ -27,5 +27,14 @@ public class LocationStats {
 
     public void setLatestTotalCases(int latestTotalCases) {
         this.latestTotalCases = latestTotalCases;
+    }
+
+    @Override
+    public String toString() {
+        return "LocationStats{" +
+                "state='" + state + '\'' +
+                ", country='" + country + '\'' +
+                ", latestTotalCases=" + latestTotalCases +
+                '}';
     }
 }

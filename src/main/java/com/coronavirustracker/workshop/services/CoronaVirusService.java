@@ -1,6 +1,6 @@
 package com.coronavirustracker.workshop.services;
 
-import com.coronavirustracker.workshop.model.LocationStats;
+import com.coronavirustracker.workshop.models.LocationStats;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -25,6 +25,7 @@ public class CoronaVirusService {
     @PostConstruct
     @Scheduled(cron = "* * 1 * * *")
     public void fetchUrlData() throws IOException, InterruptedException {
+        List<LocationStats> newStats = new ArrayList<>();
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(CORONA_VIRUS_DATA_URL))
@@ -33,8 +34,13 @@ public class CoronaVirusService {
         StringReader csvBodyReader = new StringReader(httpResponse.body());
         Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvBodyReader);
         for (CSVRecord record : records) {
-            String state = record.get("Province/State");
-            System.out.println(state);
+            LocationStats locationStat = new LocationStats();
+            locationStat.setState(record.get("Province/State"));
+            locationStat.setCountry(record.get("Country/Region"));
+            locationStat.setLatestTotalCases(Integer.parseInt(record.get(record.size() - 1)));
+            System.out.println(locationStat);
+            newStats.add(locationStat);
         }
+        this.allStats = newStats;
     }
 }
