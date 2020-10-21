@@ -11,26 +11,28 @@
 </head>
 
 <body>
-
-<h1>Total cases reported</h1>
-
-<p>This application lists the current number of cases reported across the globe</p>
-
-<div class="jumbotron">
-    <h1 class="display-4" th:text="${totalReportedCases}"></h1>
-    <p class="lead">Total cases reported as of today</p>
-</div>
 <div class="container">
-    <table>
+    <h1>Total cases reported</h1>
+
+    <p>This application lists the current number of cases reported across the globe</p>
+
+    <div class="jumbotron">
+        <h1 class="display-4" th:text="${totalReportedCases}"></h1>
+        <p class="lead">Total cases reported as of today</p>
+    </div>
+
+    <table class="table table-bordered">
+        <thead class="thead-dark">
         <tr>
-            <th>State</th>
             <th>Country</th>
+            <th>Province</th>
             <th>Total cases reported</th>
-            <th>Changes since last day</th>
+            <th>Confirmed cases since last day</th>
         </tr>
+        </thead>
         <tr th:each="locationStat : ${locationStats}">
-            <td th:text="${locationStat.state}"></td>
             <td th:text="${locationStat.country}"></td>
+            <td th:text="${locationStat.state}"></td>
             <td th:text="${locationStat.latestTotalCases}">0</td>
             <td th:text="${locationStat.diffFromPrevDay}">0</td>
         </tr>
