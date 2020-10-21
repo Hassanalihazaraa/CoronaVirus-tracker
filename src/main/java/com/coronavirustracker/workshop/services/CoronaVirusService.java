@@ -1,5 +1,6 @@
 package com.coronavirustracker.workshop.services;
 
+import com.coronavirustracker.workshop.model.LocationStats;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -12,10 +13,14 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CoronaVirusService {
     private static String CORONA_VIRUS_DATA_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv";
+
+    private List<LocationStats> allStats = new ArrayList<>();
 
     @PostConstruct
     @Scheduled(cron = "* * 1 * * *")
