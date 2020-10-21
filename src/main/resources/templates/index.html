@@ -21,7 +21,7 @@
         <p class="lead">Total cases reported as of today</p>
     </div>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered table-hover">
         <thead class="thead-dark">
         <tr>
             <th>Country</th>
@@ -31,10 +31,10 @@
         </tr>
         </thead>
         <tr th:each="locationStat : ${locationStats}">
-            <td th:text="${locationStat.country}"></td>
-            <td th:text="${locationStat.state}"></td>
-            <td th:text="${locationStat.latestTotalCases}">0</td>
-            <td th:text="${locationStat.diffFromPrevDay}">0</td>
+            <td class="table-primary" th:text="${locationStat.country}"></td>
+            <td class="table-primary" th:text="${locationStat.state}"></td>
+            <td class="table-secondary" th:text="${locationStat.latestTotalCases}">0</td>
+            <td class="table-danger" th:text="${locationStat.diffFromPrevDay}">0</td>
         </tr>
     </table>
 </div>
