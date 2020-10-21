@@ -14,7 +14,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("LocationStats", coronaVirusService.getAllStats());
+        model.addAttribute("locationStats", coronaVirusService.getAllStats());
         return "index";
     }
 }
