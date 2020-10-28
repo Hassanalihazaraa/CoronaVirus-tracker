@@ -1,1 +1,1 @@
-# Preparing for the Work-shop
+# Demo project for spring Boot

@@ -44,6 +44,7 @@ public class LocationStats {
                 "state='" + state + '\'' +
                 ", country='" + country + '\'' +
                 ", latestTotalCases=" + latestTotalCases +
+                ", diffFromPrevDay=" + diffFromPrevDay +
                 '}';
     }
 }
